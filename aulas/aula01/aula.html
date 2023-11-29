@@ -15,7 +15,7 @@
 
     <!-- OUTPUTS PARA O JS -->
 
-    
+
     <script>
         console.log("Olá mundo!");
     </script>
@@ -24,9 +24,9 @@
         document.write("Olá mundo!");
     </script>
 
-    <script>
+    <!-- <script>
         window.alert("Olá mundo!");
-    </script>
+    </script> -->
     
     <div id="textoAqui">
         <script>
@@ -34,5 +34,28 @@
         </script>
     </div>
     <!-- INPUTS PARA O JS -->
+
+    <script>
+        // var nome = prompt("Informe o seu Nome:");
+        // console.log ("Nome Digitado: ", nome);
+    </script>
+    <!-- Utilizando Variaveis (var, let const) para guardar dados -->
+
+    <script>
+        // var confirmacao = confirm("Deseja Continuar?");
+        // console.log("Resposta: ", confirmacao);
+    </script>
+
+    <input id="campoTexto" type="text" placeholder="Digite Algo Aqui...">
+    <button onclick="obterTexto()"> Obter Texto</button>
+    
+    <script>
+        function obterTexto(){
+            var texto = document.getElementById("campoTexto").value;
+            console.log("Texto digitado: ", texto);
+        }
+    </script>
+
+    
 </body>
 </html>
