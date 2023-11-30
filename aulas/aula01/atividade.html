@@ -3,27 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculando a Média</title>
+    <title>Document</title>
 </head>
 <body>
     <h1>Calculadora de Média</h1>
-    <h2>Informe as Médias</h2>
+    <h2>Informe as Médias do Aluno</h2>
 
-    <input type="number" name="nota 1" id="n1">
-    <input type="number" name="nota 2" id="n2">
-    <input type="number" name="nota 3" id="n3">
-    <input type="number" name="nota 4" id="n4">
-    <button onclick="exibirMedia"> Exibir a Média</button>
+    <input id="nota1" type="number" placeholder="1º nota">
+    <br><br>
+    <input id="nota2" type="number" placeholder="2º nota">
+    <br><br>
+    <input id="nota3" type="number" placeholder="3º nota">
+    <br><br>
+    <input id="nota4" type="number" placeholder="4º nota">
+    <br><br><br><br>
+    
+    <button onclick="media()">Exibir Média</button>
+
     <script>
-        function exibirMedia(){
-            var n1 = document.getElementById ("n1").value;
-            var n1 = document.getElementById ("n2").value;
-            var n1 = document.getElementById ("n3").value;
-            var n1 = document.getElementById ("n4").value;
-            // var media = document.getElementById("n1 + n2 + n3 + n4").value;
-            console.log(" n1+ n2 + n3 + n4");
+        function media(){
+            const notas = 4;
+            
+            let nota1 = parseFloat  (document.getElementById("nota1").value);
+            let nota2 = parseFloat  (document.getElementById("nota2").value);
+            let nota3 = parseFloat  (document.getElementById("nota3").value);
+            let nota4 = parseFloat  (document.getElementById("nota4").value);
+            
+            let soma = nota1 + nota2 + nota3 + nota4;
+            let media = soma/notas;
+
+            window.alert(media);
         }
     </script>
-    
+
 </body>
 </html>
