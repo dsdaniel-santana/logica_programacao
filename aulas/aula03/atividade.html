@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calculadora de Média</h1>
+    <h2>Informe as Médias do Aluno</h2>
+
+    <input id="nota1" type="number" placeholder="1º nota">
+    <br><br>
+    <input id="nota2" type="number" placeholder="2º nota">
+    <br><br>
+    <input id="nota3" type="number" placeholder="3º nota">
+    <br><br>
+    <input id="nota4" type="number" placeholder="4º nota">
+    <br><br><br><br>
+    
+    <button onclick="media()">Exibir Média</button>
+
+    <script>
+        function media(){
+            const notas = 4;
+            
+            let nota1 = parseFloat  (document.getElementById("nota1").value);
+            let nota2 = parseFloat  (document.getElementById("nota2").value);
+            let nota3 = parseFloat  (document.getElementById("nota3").value);
+            let nota4 = parseFloat  (document.getElementById("nota4").value);
+            
+            let soma = nota1 + nota2 + nota3 + nota4;
+            let media = soma/notas;
+
+            
+
+            window.alert(media);
+
+            if (media >= 7)
+                window.alert("Média: "  + media + " Aprovad@!");
+            else
+                window.alert("Média: "  + media + " Reprovad@!");
+
+            
+        }
+    </script>
+
+    
+
+</body>
+</html>
