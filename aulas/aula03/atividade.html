@@ -37,9 +37,11 @@
             window.alert(media);
 
             if (media >= 7)
-                window.alert("Média: "  + media + " Aprovad@!");
-            else
-                window.alert("Média: "  + media + " Reprovad@!");
+                window.alert("Média: "  + media + " Aprovado!");
+            else if (media <=5)
+                window.alert("Média: "  + media + " Recuperação");
+            else  
+                window.alert("Média: "  + media + " Reprovado!");
 
             
         }
