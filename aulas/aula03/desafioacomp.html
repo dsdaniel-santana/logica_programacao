@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz - Conhecimentos Gerais</title>
+    <title>Desafio resolvido com o professor</title>
 </head>
-
 <body>
+
     <h1>Desafio - Quiz de Conhecimentos Gerais</h1>
 
     <form id="quizForm">
@@ -24,7 +23,7 @@
         <input type="text" id="resposta4" placeholder="Sua resposta..." required>
 
         <h3>Pergunta 5: Em que ano ocorreu a Independência do Brasil?</h3>
-        <input type="text" id="resposta5" placeholder="Sua resposta..." required>
+        <input type="number" id="resposta5" placeholder="Sua resposta..." required>
 
         <br>
         <button type="button" onclick="verificarRespostas()">Verificar Respostas</button>
@@ -33,27 +32,29 @@
     <div id="resultado"></div>
 
     <script>
-        function verificarRespostas() {
-            var pontuacao = 0;
+        function verificarRespostas(){
+            let pontuacao = 0;
 
-            var resposta1 = document.getElementById("resposta1").value.toLowerCase();
-            var resposta2 = document.getElementById("resposta2").value.toLowerCase();
-            var resposta3 = document.getElementById("resposta3").value.toLowerCase();
-            var resposta4 = document.getElementById("resposta4").value.toLowerCase();
-            var resposta5 = document.getElementById("resposta5").value.toLowerCase();
+            let resposta1 = document.getElementById("resposta1").value.toLowerCase();
+            let resposta2 = document.getElementById("resposta2").value.toLowerCase();
+            let resposta3 = document.getElementById("resposta3").value.toLowerCase();
+            let resposta4 = document.getElementById("resposta4").value.toLowerCase();
+            let resposta5 = document.getElementById("resposta5").value.toLowerCase();
 
             if (resposta1 === "brasília") pontuacao++;
             if (resposta2 === "pacífico") pontuacao++;
-            if (resposta3 === "shakespeare") pontuacao++;
+            if (resposta3 === "shakespeare" || resposta3 == "wiliam shakespeare" || resposta3 == "wiliam") pontuacao++;
             if (resposta4 === "au") pontuacao++;
-            if (resposta5 === "1822") pontuacao++;
-
+            if (resposta5 == "1822") pontuacao++;
+            
             var resultadoDiv = document.getElementById("resultado");
-            resultadoDiv.innerHTML = "<h2>Sua pontuação: " + pontuacao + "/5</h2>";
+            resultadoDiv.innerHTML = "<h2>Sua Pontuação: " + pontuacao+ "</h2>"
+            
+            
+
         }
     </script>
 
-    <p><a href="../../index.html">Voltar ao Índice</a></p>
+    
 </body>
-
 </html>
