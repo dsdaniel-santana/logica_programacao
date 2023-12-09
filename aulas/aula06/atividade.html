@@ -1,37 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Atividade - Funções </h1>
 
     <h2> Crie uma função que sempre retonre o texto "obrigado!", para tornar suas frases mais educadas.</h2>
 
     <script>
-        // function souEducado(){
-        //     return "Obrigaooo";
-
+        // function souEducado() {
+        //     return " obrigado!";
         // }
 
-        // let texto = prompt("Informe um texto, e eu o farei educado. ");
+        // let texto = prompt("Informe um texto, e eu o farei educado.");
         // alert(texto + souEducado());
 
-        function soma(a, b) {
-            return a + b;
+        // function soma(a, b) {
+        //     return a + b;
+        // }
+
+        // function divide(a, b) {
+        //     if(b != 0)
+        //         return a / b;
+        //     else
+        //         return "não é possível dividir por zero"
+        // }
+
+        // console.log(divide(14, 0));
+    </script>
+
+    <script>
+        // Função que recebe um texto e informa o seu tamanho
+        // let text = "Qualquer texto";
+        // console.log("O texto tem ", tamanhoTexto(text));
+
+        // function tamanhoTexto(textoRecebido) {
+        //     return textoRecebido.length;
+        // }
+
+        // Função que recebe uma lista de nomes e retorna o de maior tamanho
+
+        //MEU CODIGO
+        // let marcasBolacha = ['trakinas', 'negresco', 'clubsocial']
+        // function maiorNome (marcas){
+        //     console.log(maiorNom);
+        //     //return marcasBolacha[];
+
+        //     for(mairNom)
+        //     {
+
+        //     }
+        // }
+
+        //RESOLUÇÃO
+        // let marcasBolacha = ['trakinas', 'negresco', 'clubsocial'];
+
+        // function maiorNome(marcas) {
+        //     let maior = '';
+
+        //     for (let i = 0; i < marcas.length; i++) {
+        //         if (marcas[i].length > maior.length) {
+        //             maior = marcas[i];
+        //         }
+        //     }
+
+        //     return maior;
+        // }
+
+        // let resultado = maiorNome(marcasBolacha);
+        // console.log(resultado);
+        
+        //função que recebe um número e informa se o mesmo é par
+        console.log(ehpar(18));
+        function ehpar (num){
+            return num % 2 === 0; 
         }
 
-        function divide(a, b) {
-            if(b != 0)
-                return a / b;
-            else
-                return "não é possível dividir por zero"
+
+        // Função que recebe uma lista de números e retorna apenas os ímpares
+        function impares(listanumeros){
+            let imapres =[];
+
+            for (let posicaoAtual = 0; numeros <listanumeros.length; posicaoAtual++){
+                if(!ehpar(listanumeros[posicaoAtual])){
+                    imapres.push(listanumeros[posicao]);
+                }
+            }
+
+            return imapres;
         }
 
-        console.log(divide(14, 0));
+        let numerosParaExtrair = [1, 2, 3, 4, 5, 6, 7, 8];
+        console.log(impares(numerosParaExtrair)); 
 
     </script>
 </body>
+
 </html>
