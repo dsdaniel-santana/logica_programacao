@@ -17,7 +17,7 @@
         <!--Itens aqui-->
     </ul>
 
-    <p><b>Total de Itens: </b><span id="totalItens">0</span></p>
+    <p>Total de Itens: <span id="totalItens">0</span></p>
 
     <script>
         function adicionarItem() {
@@ -33,7 +33,7 @@
                 // Botão de remoção
                 let botaoRemover = document.createElement("button");
                 botaoRemover.innerHTML = "Remover";
-                botaoRemover.onclick = function(){
+                botaoRemover.onclick = function() {
                     removerItem(novaLinha);
                 }
 
@@ -48,24 +48,22 @@
 
                 itemInput.value = "";
 
-                atualizarTotalItens()
+                atualizarTotalItens();
             }
         }
 
-        function removerItem(linha){
+        function removerItem(linha) {
             let listaDeCompras = document.getElementById("listaDeCompras");
             listaDeCompras.removeChild(linha);
-            
-            atualizarTotalItens()
+
+            atualizarTotalItens();
         }
 
-        function atualizarTotalItens(){
+        function atualizarTotalItens() {
             let listaDeCompras = document.getElementById("listaDeCompras");
-            let totalItens = document.getElementById("totalItens");
+            let totalItens = document.getElementById("totalItens");            
             totalItens.textContent = listaDeCompras.childElementCount;
         }
-
-
     </script>
 </body>
 
