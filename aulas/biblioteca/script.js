@@ -39,3 +39,34 @@ class Revista extends MaterialBibliografico {
         this.categoria = categoria;
     }
 }
+
+function realizarAcao(acao){
+    console.log("Realizou uma: " + acao);
+
+}
+
+const livros = [
+    new Livro("Nunca Desita dos Seus Sonhos", "Augusto Cury", "AutoAjuda"),
+    new Livro("A Arte da Guerra", "Sun Tzu", "Negocios"),
+    new Livro("O Poder do Habito", "Charles Durring", "Desenvolvimento"),
+    new Revista("Playboy", "Abril", "Entreterimento")
+    
+];
+
+const selectLivros = document.getElementById("livros");
+
+// for(let i = 0; < livros.length; i++) {
+//     const livro = livro [i];
+//     const option = document.createElement("option");
+//     option.value = i + 1;//adciona 1 para evitar o valor 0, que representa a opção padrao
+//     option.text = livro.titulo;
+//     selectLivros.add(option);
+// }
+
+for(let i = 0; i < livros.length; i++) {
+    const livro = livros[i];
+    const option = document.createElement("option");
+    option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
+    option.text = livro.titulo;
+    selectLivros.add(option);
+}
