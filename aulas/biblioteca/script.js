@@ -24,6 +24,9 @@ class MaterialBibliografico {
             return false; //Material já devolvido previamente
         }
     }
+    toString() {
+        return `${this.titulo} - ${this.autor}`;
+    }
 }
 
 class Livro extends MaterialBibliografico {
@@ -77,18 +80,20 @@ const livros = [
 
 const selectLivros = document.getElementById("livros");
 
+// for(let i = 0; i < livros.length; i++) {
+//     const livro = livros [i];
+//     const option = document.createElement("option");
+//     option.value = i + 1;//adciona 1 para evitar o valor 0, que representa a opção padrao
+//     option.text = livro.titulo;
+//     selectLivros.add(option);
+// }
+
 for(let i = 0; i < livros.length; i++) {
-    const livro = livros [i];
+    const livro = livros[i];
     const option = document.createElement("option");
-    option.value = i + 1;//adciona 1 para evitar o valor 0, que representa a opção padrao
+    option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
     option.text = livro.titulo;
     selectLivros.add(option);
 }
 
-// for(let i = 0; i < livros.length; i++) {
-//     const livro = livros[i];
-//     const option = document.createElement("option");
-//     option.value = i + 1; //Adiciona 1 para evitar o valor 0, que representa a opção padrão
-//     option.text = livro.titulo;
-//     selectLivros.add(option);
-// }
+console.log(livros[0].toString());
