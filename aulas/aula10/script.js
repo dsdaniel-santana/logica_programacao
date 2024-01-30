@@ -55,7 +55,7 @@ class Personagem {
 
     }
 
-    recuperarVida(vidaRecebida, personagem){
+    recuperarVida(vidaRecebida, personagem = this){
          personagem.vida += vidaRecebida;
         
         if(personagem.vida > personagem.vidaMaxima){
@@ -72,5 +72,8 @@ let personagem2 = new Personagem("Gendalf", 12, 8, vida =85, 1);
 
 console.log(personagem1);
 console.log(personagem2);
+
 console.log(personagem1.atacar(personagem2));
-console.log(personagem2.recuperarVida(20, personagem1));
+console.log(personagem2.atacar(personagem1));
+console.log(personagem1.recuperarVida(15));
+console.log(personagem1.recuperarVida(15, personagem2));
