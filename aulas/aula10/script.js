@@ -34,6 +34,11 @@ Alterações do Guerreiro:
     
     - Acrescente a sobrescrita da função atacar, verificando a posição do inimigo
     - Se o inimigo estiver a mais de 1 de distância, o guerreiro não pode atacar.
+
+Alterações do Arqueiro:
+    - O arqueiro só pode atacar se a distancia dele para o oponente for maior do que 3.
+    - O arqueiro tem um totalDeFlechas.
+    - O arqueiro só pode atacar se o total de flechas for maior que 0
 */
 
 class Personagem {
@@ -49,7 +54,7 @@ class Personagem {
 
     morrer() {
         this.vivo = false;
-        console.log(`O ${this.nome} morreu!`);
+        console.log(`O ${this.nome} morreu!`);        
     }
 
     tomarDano(quantidade) {
@@ -87,18 +92,19 @@ class Personagem {
 }
 
 class Arqueiro extends Personagem {
-    constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
-        super(nome, ataque, defesa, vida, posicao, vivo)
-        this.flecha = flecha;
+    constructor(nome, ataque, defesa, vida, posicao, vivo = true, totalDeFlechas) {
+        super(nome, ataque, defesa, vida, posicao, vivo);
+        this.totalDeFlechas = totalDeFlechas;
     }
 
-    atacar(inimigo, flecha ){
-        if(Math.abs(inimigo.posicao - this.posicao) > 3 && flecha >0) {
+    atacar(inimigo) {
+        if(this.totalDeFlechas > 0 && Math.abs(this.posicao - inimigo.posicao) > 3) {
             super.atacar(inimigo);
-            
-        }else{
-            console.log('Nessa distancia não é possivel atacar');
-
+            this.totalDeFlechas -= 1;
+        } else if(!(this.totalDeFlechas > 0) && Math.abs(this.posicao - inimigo.posicao) > 3) {
+            console.log(`${this.nome} está sem flechas para atacar!`);
+        } else if(this.totalDeFlechas > 0 && !(Math.abs(this.posicao - inimigo.posicao) > 3)){
+            console.log(`${this.nome} não pode atacar ${inimigo.nome} pois estão próximos ${this.posicao} - ${inimigo.posicao}`);
         }
     }
 }
@@ -134,8 +140,15 @@ class Mago extends Personagem {
     }
 }
 
-let personagem1 = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
-let personagem2 = new Mago("Gendalf", 12, 8, 85, 2);
+let persoGuerreiro = new Guerreiro("Aragorn", 10, 12, 100, 5, true, 5);
+let persoMago = new Mago("Gendalf", 12, 8, 85, 2);
 
-console.log(personagem1.atacar(personagem2));
-console.log(personagem2.atacar(personagem1));
+let persoArqueiro = new Arqueiro("Legolas", 18, 9, 60, 15, true, 2);
+let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 15, true, 8);
+
+// console.log(persoGuerreiro.atacar(persoMago));
+// console.log(persoMago.atacar(persoGuerreiro));
+
+console.log(persoArqueiro.atacar(persoArqueiro2));
+console.log(persoArqueiro.atacar(persoArqueiro2));
+console.log(persoArqueiro.atacar(persoArqueiro2));
