@@ -142,7 +142,14 @@ class Guerreiro extends Personagem {
 
 class Mago extends Personagem {
     constructor(nome, ataque, defesa, vida, posicao, vivo = true) {
-        super(nome, ataque, defesa, vida, posicao, vivo)
+        super(nome, ataque, defesa, vida, posicao, vivo);
+        this.magia = vida/2
+    }
+
+    atacar(inimigo){
+        if (this.magia -= 2){
+
+        }
     }
 }
 
@@ -152,11 +159,16 @@ let persoMago = new Mago("Gendalf", 12, 8, 85, 2);
 let persoArqueiro = new Arqueiro("Legolas", 18, 9, 60, 11, true, 2);
 let persoArqueiro2 = new Arqueiro("Robin Hood", 15, 9, 60, 15, true, 8);
 
+
+let persoMago2 = new Arqueiro("Robin Hood", 15, 9, 60, 15, true, 8);
+
 // console.log(persoGuerreiro.atacar(persoMago));
 // console.log(persoMago.atacar(persoGuerreiro));
 
-console.log(persoArqueiro.atacar(persoArqueiro2));
-console.log(persoArqueiro.atacar(persoArqueiro2));
-console.log(persoArqueiro.atacar(persoArqueiro2));
+// console.log(persoArqueiro.atacar(persoArqueiro2));
+// console.log(persoArqueiro.atacar(persoArqueiro2));
+// console.log(persoArqueiro.atacar(persoArqueiro2));
 
-console.log((`Total de Flechas do ${persoArqueiro.nome} agora é ${persoArqueiro.recarregarFlecha(5)}`));
+// console.log((`Total de Flechas do ${persoArqueiro.nome} agora é ${persoArqueiro.recarregarFlecha(5)}`));
+
+console.log(persoMago.atacar(persoMago2));
