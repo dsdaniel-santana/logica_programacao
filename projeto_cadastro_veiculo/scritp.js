@@ -42,12 +42,28 @@ function cadastrarVeiculo(){
     veiculos.push(veiculo);
 
     
-    console.log(veiculos);
+    exibirVeiculos();
 
     //Limpar Formulário
     document.getElementById("veiculoForm").reset();
 
 } 
+
+function exibirVeiculos(){
+    const veiculosList = document.getElementById("veiculosList");
+
+    //limpar a lista antes de exibir os veículos
+    veiculosList.innerHTML = "";
+    
+    for (let i = 0; i < veiculos.length; i++) {
+        const veiculoItem = document.createElement("li");
+        veiculoItem.innerHTML = veiculos[i].modelo;
+        veiculosList.appendChild(veiculoItem);
+    }
+    
+}
+
+
     
 
 // veiculos.push(new Veiculo("Fiat", "Uno", 60000, "branco", 16, 90,"www.hotmail.com" ))
