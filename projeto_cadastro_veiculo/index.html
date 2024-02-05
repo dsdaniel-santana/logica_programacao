@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Veiculos</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
-    <h1>Cadastro Veiculos</h1>
+    <h1>Cadastro de Veículos</h1>
 
     <form id="veiculoForm">
         <label for="marca">Marca:</label>
@@ -16,29 +16,30 @@
         <label for="modelo">Modelo:</label>
         <input type="text" id="modelo" required>
 
-        <label for="preco">Preco:</label>
+        <label for="preco">Preço:</label>
         <input type="text" id="preco" required>
 
         <label for="cor">Cor:</label>
         <input type="text" id="cor" required>
 
-        <label for="autonomia">Autonomia:</label>
+        <label for="autonomia">Autonomia por Litro:</label>
         <input type="text" id="autonomia" required>
 
-        <label for="capacidadeTanque">Capacidade Tanque:</label>
+        <label for="capacidadeTanque">Capacidade do Tanque:</label>
         <input type="text" id="capacidadeTanque" required>
 
-        <label for="imagemURL">Link Da Imagem:</label>
+        <label for="anoDeFabricacao">Ano de Fabricação:</label>
+        <input type="text" id="anoDeFabricacao" required>
+
+        <label for="imagemURL">Link da Imagem:</label>
         <input type="text" id="imagemURL" required>
 
         <button type="button" onclick="cadastrarVeiculo()">Cadastrar Veiculo</button>
     </form>
 
     <h2>Veículos Cadastrados</h2>
-    <ul id="veiculosList">
-        
-    </ul>
+    <ul id="veiculosList"></ul>
 
-    <script src="scritp.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
