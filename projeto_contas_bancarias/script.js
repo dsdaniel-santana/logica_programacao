@@ -1,95 +1,73 @@
 class Cliente {
-    constructor(nome, cpf){
+    constructor(nome, cpf) {
         this.nome = nome;
         this.cpf = cpf;
     }
-
 }
 
 class Conta {
-    constructor(cliente, numero, saldo){
+    constructor(cliente, numero, saldo) {
         this.cliente = cliente;
         this.numero = numero;
         this.saldo = saldo;
     }
 
-    sacar(valorSaque){
-        //verficar se o saldo é maior ou igual ao valor
-        //e verficar se o valor é maior que 0
-        //retornar true em caso de sucesso, false caso não
-
-        if(this.saldo >= valorSaque  && valorSaque >=0){
+    sacar(valorSaque) {
+        if (this.saldo >= valorSaque && valorSaque > 0) {
             this.saldo -= valorSaque;
             return true;
-        } return false;          
+        }
+
+        return false;
     }
 
-    depositar(valorDeposito){
-        //se o valor for maior que zero, soma valor ao saldo
-        if(valorDeposito >0){
+    depositar(valorDeposito) {
+        if (valorDeposito > 0) {
             this.saldo += valorDeposito;
             return true;
-        } return false;                
+        }
+
+        return false;
     }
 
-    transfererir(valorTransferencia, contaDestino) {
-        //se consigo sacar dessa conta 
-        //posso depositar na conta destino
-
-        //METODO JUVENIL
-        // if(this.saldo >= valorTransferencia  && valorTransferencia >0){
-        //     this.saldo -= valorTransferencia;
-        //     conta.saldo += valorTransferencia;
-        //     return true;
-        // }
-
-        //CÓDIGO LIMPO
-        if(this.sacar(valorTransferencia)) {            
-            conta.depositar(valorTransferencia)
+    transferir(valorTransferencia, contaDestino) {
+        if (this.sacar(valorTransferencia)) {
+            contaDestino.depositar(valorTransferencia)
             return true;
         }
-        
+
         return false;
-    
-        
+    }
+
+    toString() {
+        return `Numero: ${this.numero} - Saldo: ${this.saldo} - Cliente: ${this.cliente.nome}`
     }
 }
 
-class ContaCorrente extends Conta{
-    constructor(cliente, numero, saldo, limiteChequeEspecial){
+class ContaCorrente extends Conta {
+    constructor(cliente, numero, saldo, limiteChequeEspecial) {
         super(cliente, numero, saldo);
         this.limiteChequeEspecial = limiteChequeEspecial;
     }
 
-    sacar(valorSaque){
-        //somar o valor do cheque especial ao valor do saldo
-        //verificar se pode sacar com base nessa soma
-        
+    sacar(valorSaque) {
         const valorLimiteEspecial = this.saldo + this.limiteChequeEspecial;
-        if (valorSaque <= valorLimiteEspecial){
-            return super.sacar(valorSaque) 
+
+        if (valorSaque <= valorLimiteEspecial) {
+            return super.sacar(valorSaque);
         }
-        return false
 
-        
-        
-
-        //METODO JUVENIL
-        // if(this.saldo + this,this.limiteChequeEspecial >= valorSaque > 0){
-        //     this.saldo -= valorSaque;
-        //     return true;
-        // }
-        // return false;
+        return false;
     }
 }
 
 class ContaPoupanca extends Conta {
-    constructor(cliente, numero, saldo, taxaRendimento){
+    constructor(cliente, numero, saldo, taxaRendimento) {
         super(cliente, numero, saldo);
         this.taxaRendimento = taxaRendimento;
     }
-    
-    aplicarRedimento(){
+
+    aplicarRendimento() {
         this.saldo += this.saldo * this.taxaRendimento;
     }
 }
@@ -97,36 +75,101 @@ class ContaPoupanca extends Conta {
 let contas = [];
 let clientes = [];
 
-function cadastrarCliente(){
-    //pegar dados da tela
+function cadastrarCliente() {
+    // pegar dados da tela
     const nome = document.getElementById("nomeCliente").value;
     const cpf = document.getElementById("cpfCliente").value;
 
-    //isntanciar novo cliente
+    // instanciar novo cliente
     const cliente = new Cliente(nome, cpf);
 
-    //adcionar esse cliente a lista de clientes
-    clientes.push(cliente)
+    // adicionar esse cliente a lista de clientes
+    clientes.push(cliente);
+
+    atualizarSeletorClientes();
+    exibirClientes();
+
+    document.getElementById("clienteForm").reset();
 }
 
+// Exibir clientes cadastrados
+function exibirClientes() {
+    const clientesList = document.getElementById("clientesList");
+    // Limpar a lista antes de exibir os clientes
+    clientesList.innerHTML = "";
 
-// let clienteA = new Cliente("Chapolin", "1234567890");
-// clientes.push(clienteA);
-// let clienteB = new Cliente("Chaves", "0987654321");
-// clientes.push(clienteB);
+    for (let i = 0; i < clientes.length; i++) {
+        const clienteItem = document.createElement("li");
+        clienteItem.textContent = `Nome: ${clientes[i].nome} - CPF: ${clientes[i].cpf}`;
+        clientesList.appendChild(clienteItem);
+    }
+}
 
-// let contaX = new ContaCorrente(clienteA, 123, 100, 150);
-// contas.push(contaX);
-// let contaY = new ContaPoupanca(clienteB, 567, 100, 0.01);
-// contas.push(contaY);
-// let contaZ = new ContaCorrente(clienteB, 235, 0, 180);
-// contas.push(contaZ);
+function atualizarSeletorClientes() {
+    const seletorClientes = document.getElementById("cliente");
 
-// //console.log("Contas:", contas);
-// //console.log("Clientes:", clientes,);
+    seletorClientes.innerHTML = "";
 
-// //console.log(contaY.cliente.nome);
+    clientes.forEach(cliente => {
+        const option = document.createElement("option");
+        option.value = cliente.cpf;
+        option.textContent = cliente.nome;
+        seletorClientes.appendChild(option);
+    });
+}
 
-// contaY.transfererir(50, contaX);
-// console.log("contaY:", contaY);
-// console.log("contaX:", contaX);
+function cadastrarConta() {
+    // pegar os dados da tela
+    const numero = parseInt(document.getElementById("numero").value);
+    const saldo = parseFloat(document.getElementById("saldo").value);
+    const tipoConta = document.getElementById("tipoConta").value;
+
+    // identificar o cliente selecionado na lista de clientes
+    const clienteSelecionado = document.getElementById("cliente").value;
+    const cliente = clientes.find(c => c.cpf === clienteSelecionado);
+
+    // instanciar uma nova conta, a partir do tipo de conta selecionada
+
+    let conta;
+    switch(tipoConta) {
+        case "ContaCorrente":
+            conta = new ContaCorrente(cliente, numero, saldo, 100);
+            break;
+        case "ContaPoupanca":
+            conta = new ContaPoupanca(cliente, numero, saldo, 0.01);
+            break;
+        default:
+            alert("tipo selecionado inválido!");
+            break;
+    }
+
+    contas.push(conta);
+
+    exibirContas();
+
+    document.getElementById("contaForm").reset();
+}
+
+function exibirContas() {
+    const contasList = document.getElementById("contasList");
+    // Limpar a lista antes de exibir as contas
+    contasList.innerHTML = "";
+
+    for (let i = 0; i < contas.length; i++) {
+        const contaItem = document.createElement("li");
+        const contaCard = criarContaCard(contas[i]);
+        contasList.appendChild(contaCard);
+        contasList.appendChild(contaItem);
+    }
+}
+
+function criarContaCard(conta) {
+    const contaCard = document.createElement("div");
+    contaCard.className = "conta-card";
+
+    const detalhesConta = document.createElement("div");
+    detalhesConta.textContent = conta.toString();
+    contaCard.appendChild(detalhesConta);
+
+    return contaCard;
+}
